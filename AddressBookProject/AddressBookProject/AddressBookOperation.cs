@@ -58,12 +58,57 @@ namespace AddressBookProject
                 Console.WriteLine($"First Name: {contact.FirstName}");
                 Console.WriteLine($"Last Name: {contact.LastName}");
                 Console.WriteLine($"Address: {contact.Address}");
-                Console.WriteLine($"Ciry: {contact.City}");
+                Console.WriteLine($"City: {contact.City}");
                 Console.WriteLine($"State: {contact.State}");
                 Console.WriteLine($"Phone Number: {contact.PhoneNumber}");
                 Console.WriteLine($"Email: {contact.EmailAddress}");
                 Console.WriteLine();
             }
+        }
+        /*UC-03
+         * Ability to edit existing contact person using their
+         */
+        public static void EditContact(List<Contact> contacts)
+        {
+            Console.Write("Enter First name of contact to edit: ");
+            var name = Console.ReadLine();
+            var contact = contacts.FirstOrDefault(c => c.FirstName == name);
+
+            if (contact == null)
+            {
+                Console.WriteLine("Contact not found!");
+                return;
+            }
+
+            Console.Write("Enter new phone number (leave blank to keep existing value): ");
+            var phoneNumber = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(phoneNumber))
+            {
+                contact.PhoneNumber = phoneNumber;
+            }
+
+            Console.Write("Enter new email address (leave blank to keep existing value): ");
+            var emailAddress = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(emailAddress))
+            {
+                contact.EmailAddress = emailAddress;
+            }
+
+            Console.Write("Enter new city (leave blank to keep existing value): ");
+            var city = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(city))
+            {
+                contact.City = city;
+            }
+
+            Console.Write("Enter new state (leave blank to keep existing value): ");
+            var state = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(state))
+            {
+                contact.State = state;
+            }
+
+            Console.WriteLine("Contact updated successfully!");
         }
     }
 }
