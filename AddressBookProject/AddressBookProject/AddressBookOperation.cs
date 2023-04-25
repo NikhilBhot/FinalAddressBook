@@ -110,5 +110,25 @@ namespace AddressBookProject
 
             Console.WriteLine("Contact updated successfully!");
         }
+        /*UC-04
+         * Ability to delete a person using person's name - Use Console to delete a person
+         */
+        public static void DeleteContact(List<Contact> contacts)
+        {
+            Console.Write("Enter name of contact to delete: ");
+            var name = Console.ReadLine();
+            var contact = contacts.FirstOrDefault(c => c.FirstName == name);
+
+            if (contact == null)
+            {
+                Console.WriteLine("Contact not found!");
+                return;
+            }
+
+            contacts.Remove(contact);
+            //deleteFromJson(contacts, contact);
+
+            Console.WriteLine("Contact deleted successfully!");
+        }
     }
 }
