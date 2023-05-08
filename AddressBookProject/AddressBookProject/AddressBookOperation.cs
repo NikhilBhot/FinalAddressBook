@@ -130,5 +130,19 @@ namespace AddressBookProject
 
             Console.WriteLine("Contact deleted successfully!");
         }
+        //UC-06,UC-07,UC-08
+       public static string UseAddressBook(Dictionary<string, List<Contact>> addressBooks)
+        {
+            Console.Write("Enter name of address book: ");
+            var addressBookName = Console.ReadLine();
+
+            if (!addressBooks.ContainsKey(addressBookName))
+            {
+                addressBooks[addressBookName] = new List<Contact>();
+            }
+
+            Console.WriteLine($"Using address book: {addressBookName}");
+            return addressBookName;
+        }
     }
 }
